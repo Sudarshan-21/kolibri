@@ -22,8 +22,7 @@ const topic = ref<Topic>()
 const dataLoaded = ref(false)
 const $loading = useLoading()
 
-
-const errMessage = computed(() => useMainStore.error?.errorMessage)
+const errMessage = computed(() => main.errorMessage)
 
 
 /** Retrieve topic data */

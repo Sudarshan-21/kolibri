@@ -17,7 +17,7 @@ watch(params, () => {
   }
 })
 
-const errMessage = computed(() => useMainStore.error?.errorMessage)
+const errMessage = computed(() => main.errorMessage)
 
 // fetch channel data and set default topic if needed
 onMounted(async () => {

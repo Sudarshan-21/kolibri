@@ -27,13 +27,15 @@ export const useMainStore = defineStore('main', {
         this.isLoading = false
         this.channelData = response.data as Channel
       } catch (error) {
-        this.isLoading = false
-        this.channelData = null
-        this.handleAxiosError(error);
-        if (!axios.isAxiosError(error)) {
-          this.errorMessage = 'Failed to load channel data';
+        if (error instanceof AxiosError) {
+          this.isLoading = false
+          this.channelData = null
+          this.handleAxiosError(error);
+          if (!axios.isAxiosError(error)) {
+            this.errorMessage = 'Failed to load channel data';
+          }
+          this.error = error // Set axios error to store
         }
-        this.error = error // Set axios error to store
       }
     },
     async fetchTopic(slug: string) {
@@ -43,15 +45,17 @@ export const useMainStore = defineStore('main', {
         const response = await axios.get('./topics/' + slug + '.json')
         this.isLoading = false
         return response.data as Topic
-      } catch (error) {
-        this.isLoading = false
-        this.channelData = null
-        this.handleAxiosError(error);
-        if (!axios.isAxiosError(error)) {
-          this.errorMessage = 'Failed to load node ' + slug + ' data';
+      } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+          this.isLoading = false
+          this.channelData = null
+          this.handleAxiosError(error);
+          if (!axios.isAxiosError(error)) {
+            this.errorMessage = 'Failed to load node ' + slug + ' data';
+          }
+          this.error = error // Set axios error to store
+          return null
         }
-        this.error = error // Set axios error to store
-        return null
       }
     },
     handleAxiosError(error: AxiosError<object>) {
