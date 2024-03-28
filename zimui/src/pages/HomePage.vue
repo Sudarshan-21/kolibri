@@ -49,4 +49,9 @@ import TopicHome from '../components/TopicHome.vue'
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+</style>

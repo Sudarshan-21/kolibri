@@ -95,7 +95,7 @@ const goToPreviousPage = () => {
 
 <template>
 <div>
-    <div v-if="errMessage" class="alert alert-danger" role="alert">
+    <div v-if="errMessage" class="error-message" >
       Error: {{ errMessage }}
     </div>
   <div v-else>
@@ -285,4 +285,10 @@ const goToPreviousPage = () => {
 footer {
   text-align: center;
 }
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
 </style>
