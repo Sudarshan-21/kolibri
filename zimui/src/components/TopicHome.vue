@@ -187,14 +187,15 @@ const goToPreviousPage = () => {
     </div>
 
     <div class="container">
-      <div class="row">
+      <div class="row flex-wrap">
         <div
           v-for="(content, contentIndex) in getNonTopicSections(topic.sections)"
           :key="contentIndex"
-          class="col-sm-6 col-md-6 col-lg-3 pt-3 pb-3"
+          class="col-sm-6 col-md-6 col-lg-3 d-flex align-items-stretch mt-5 " 
         >
           <TopicCard
             :data="transformTopicSectionOrSubSectionToCardData(content)"
+            class="w-100"
           />
         </div>
       </div>

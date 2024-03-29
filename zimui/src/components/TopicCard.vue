@@ -85,7 +85,7 @@ defineProps({
             {{ data.description }}
           </span>
         </div>
-        <p class="card-text">
+        <p class="card-text open-badge">
           <span class="badge rounded-pill badge-primary">
             <FontAwesomeIcon icon="fa-regular fa-file-lines" />
             &nbsp;OPEN
@@ -101,12 +101,17 @@ defineProps({
   background-color: #091415;
   border-radius: 1rem;
   color: white;
+  overflow: hidden;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .card-img-top {
   border-radius: 1rem 1rem 0 0;
+  height: 60%; 
+  width: 100%; 
+  object-fit: cover; 
+  top: 0;
 }
 
 .badge {
@@ -118,7 +123,10 @@ defineProps({
   border-width: thin;
   border-style: solid;
 }
-
+.open-badge {
+  bottom: 10px; 
+  left: 10px;
+}
 .more .card-content {
   height: calc(6rem - 2px);
 }
